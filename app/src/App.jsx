@@ -1,19 +1,22 @@
 import { useState } from 'react'
 import Button from './components/Button'
 import DisplayWord from './components/DisplayWord'
+import WordCount from './components/WordCount'
 
 
 import './index.css'
 
 function App() {
   const [currentWord, setCurrentWord] = useState("Hello")
+  const [wordsGenerated, setWordsgenerated] = useState(1)
+
   return (
     <>
-      <div className='h-screen w-full bg-blue-500'>
-        <h1 className=' text-xl text-gray-950'>Text</h1>
-        <p>Helloo</p>
-        <Button setCurrentWord={setCurrentWord} />
+      <div>
+       <h1>Jarzii's Word Generator</h1>
+        <Button setCurrentWord={setCurrentWord} wordsGenerated={wordsGenerated} />
         <DisplayWord currentWord={currentWord} />
+        <WordCount setWordsgenerated={setWordsgenerated}/>
       </div>
     </>
   )

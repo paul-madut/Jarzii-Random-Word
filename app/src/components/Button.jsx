@@ -4,12 +4,12 @@ import axios from 'axios';
 
 import React from 'react';
 
-function Button({ setCurrentWord }) {
+function Button({ setCurrentWord, wordsGenerated }) {
 
     const fetchData = () => {
-        axios.get('https://random-word-api.herokuapp.com/word?number=2')
+        axios.get(`https://random-word-api.herokuapp.com/word?number=${wordsGenerated}`)
             .then(response => {
-                setCurrentWord(response.data);
+                setCurrentWord(response.data + "\n");
             })
             .catch(error => {
                 console.error('There was an error!', error);
@@ -18,7 +18,7 @@ function Button({ setCurrentWord }) {
 
     return (
         <div>
-            <button onClick={() => fetchData()}>Click me</button>
+            <button onClick={() => fetchData()}>New word</button>
         </div >
     );
 }
